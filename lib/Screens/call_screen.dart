@@ -74,7 +74,7 @@ class _CallScreenState extends State<CallScreen> {
   /// Create agora sdk instance and initialize
   Future<void> _initAgoraRtcEngine() async {
     _engine = await RtcEngine.create(appID);
-    await _engine.disableVideo();
+    //await _engine.disableVideo();
     await _engine.enableAudio();
     await _engine.setChannelProfile(ChannelProfile.LiveBroadcasting);
     await _engine.setClientRole(widget.role);
@@ -313,6 +313,7 @@ class _CallScreenState extends State<CallScreen> {
   }
 
   void _onCallEnd(BuildContext context) {
+    dispose();
     Navigator.pop(context);
   }
 
